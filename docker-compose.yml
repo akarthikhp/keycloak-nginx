@@ -16,7 +16,7 @@ services:
      environment:
        - KEYCLOAK_USER=admin
        - KEYCLOAK_PASSWORD=password
-       - DB_VENDOR=postgres
+       - DB_VENDOR=mysql
        - DB_USER=admin
        - DB_PASSWORD=password
        - DB_ADDR=keycloak-db
@@ -27,13 +27,13 @@ services:
        - keycloak-db
 
   keycloak-db:
-    image: postgres:10
+    image: mysql:latest
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: keycloakdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_DB: keycloakdb
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - mysqldata:/var/lib/mysql/data
 
 volumes:
-  pgdata:
+  mysqldata:
